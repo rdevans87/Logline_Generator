@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets\css\bootstrap4-neon-glow.css"/>
+        <link rel="stylesheet" type="text/css" href="assets\css\style.css" />
+        
+  <title>Logline Generator</title>
+</head>
+<body>
+  <div class="topnav">
+    <a class="active" href="#save" onclick="saveStory()">Save</a>
+    <a href="#print" onclick="printStory()">Print</a>
+    <a href="#delete" onclick="deleteStory()">Delete</a>
+    <a href="#new" onclick="newProject()">New Project</a>  
+  </div>
+  <div>
+  <h1>Logline Generator</h1>
+  <h5>
+    Choose the type that best fits your story and create a logline using a pre-designed sentence structure:
+  </h5>
+  </div>
+<div>
+  For<strong>"When a"</strong>loglines, the sentence structure usually introduces the lead character(s), central conflict, opposing force, action point, and main goal. For example, "When a brave firefighter must confront a dangerous arsonist, he risks everything to save innocent lives."
+  </div>
+  <div>
+  For <strong>"After a"</strong>loglines, the sentence structure starts with the major event and then introduces the lead character(s), action point, main goal, and opposing force. For example, "After losing her family in a tragic accident, a young woman sets out on a quest for revenge against the corrupt corporation responsible."
+  </div>
+  <div>
+  For<strong>"A"</strong> loglines, the sentence structure is usually the most concise and simple of the three. It should quickly convey the main idea of the screenplay, including the lead character(s), central conflict, opposing force, main goal. For example, "A small-town sheriff must face off against a ruthless gang of criminals to protect his town."
+  </div>
+  <div>
+  <label for="logline-type">Select logline type:</label>
+  <select id="logline-type"  onchange="toggleInputFields()">
+    <option value="select">Select...</option>
+    <option value="when-a">When a...</option>
+    <option value="after-a">After a...</option>
+    <option value="a">A...</option>
+  </select>
+</div>
+<div id="when-a" class="logline-inputs" style="display: none;">
+  <h2>When a...</h2>
+  <span>When a</span><input type="text" name="leadCharacter" placeholder="Lead Character(s)" name="leadCharacter">
+  <input type="text" name="centralConflict" placeholder="Central Conflict">
+  <input type="text" name="opposingForce" placeholder="Opposing Force">
+  <input type="text" name="actionPoint" placeholder="Action Point">
+  <input type="text" name="mainGoal" placeholder="Main Goal">
+  <button type="button" onclick="generateLogline()">Generate Logline</button>
+</div>
+<div id="after-a" class="logline-inputs" style="display: none;">
+  <h2>After a...</h2>
+  <span>After a</span><input type="text"  name="majorEvent" placeholder="Major Event">
+  <input type="text" name="leadCharacter" placeholder="Lead Character(s)" name="leadCharacter">
+  <input type="text" name="actionPoint" placeholder="Action Point">
+  <input type="text" name="mainGoal" placeholder="Main Goal">
+  <input type="text" name="opposingForce" placeholder="Opposing Force">
+  <button type="button" onclick="generateLogline()">Generate Logline</button>
+</div>
+<div id="a" class="logline-inputs" style="display: none;">
+  <h2>A...</h2>
+  <span>A</span><input type="text" id="lead-character" name="leadCharacter" placeholder="Lead Character(s)" >
+  <input type="text" name="centralConflict" placeholder="Central Conflict">
+  <input type="text" name="opposingForce" placeholder="Opposing Force">
+  <input type="text" name="mainGoal" placeholder="Main Goal">
+  <button type="button" id="generate-logline" onclick="generateLogline()">Generate Logline</button>
+</div>
+
+<div id="logline" class="logline-output">
+  <h2>Logline:</h2>
+  <p id="generated-logline"></p>
+</div>
+
+<script>
+function toggleInputFields() {
+  const loglineType = document.getElementById('logline-type').value;
+  const loglineInputs = document.getElementsByClassName('logline-inputs');
+
+  for (const input of loglineInputs) {
+    input.style.display = 'none';
+  }
+
+  if (loglineType) {
+    const selectedInput = document.getElementById(loglineType);
+    selectedInput.style.display = 'block';
+  }
+}
+  </script>
+  
+  <script src="assets\js\logline.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+  </html>
