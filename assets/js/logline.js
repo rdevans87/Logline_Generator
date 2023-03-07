@@ -1,10 +1,33 @@
-
- const inputValues = {
+  const inputValues = {
     'when-a': {},
     'after-a': {},
     'a': {},
    
   };
+  function downloadLoglines() {
+    // Get all the logline text elements on the page
+  // Get all the logline text elements on the page
+const loglines = document.querySelectorAll('.logline');
+
+// Create a new text file
+const file = new Blob([Array.from(loglines).map(logline => logline.innerText).join('\n')], {type: 'text/plain'});
+
+  
+    // Create a URL for the file
+    const url = URL.createObjectURL(file);
+  
+    // Create a link to download the file
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'loglines.txt';
+  
+    // Click the link to start the download
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+  
+  document.getElementById('download-btn').addEventListener('click', downloadLoglines);
 
 
   function generateLogline() {
@@ -22,7 +45,7 @@
     let logline;
     switch (loglineType) {
       case 'when-a':
-        logline = `When a ${inputValues.leadCharacter} ${inputValues.centralConflict} ${inputValues.actionPoint} ${inputValues.mainGoal} ${inputValues.opposingForce}.`;
+        logline = `"When a ${inputValues.leadCharacter} ${inputValues.centralConflict} ${inputValues.actionPoint} ${inputValues.mainGoal} ${inputValues.opposingForce}."`;
         break;
       case 'after-a':
         logline = `After a ${inputValues.majorEvent}, ${inputValues.leadCharacter}  ${inputValues.actionPoint} ${inputValues.mainGoal} ${inputValues.opposingForce}.`;
@@ -32,33 +55,7 @@
         break;
     }
 
-    // function saveStory() {
-      // Get the input values
-    //   const incitingIncident = document.getElementById('incitingIncident').value;
-    //   const protagonist = document.getElementById('protagonist').value;
-    //   const mainGoal = document.getElementById('mainGoal').value;
-    //   const antagonist = document.getElementById('antagonist').value;
-    //   const obstacle = document.getElementById('obstacle').value;
-    //   const painPoint = document.getElementById('painPoint').value;
-    //   const setting = document.getElementById('setting').value;
-    //   const forcedAction = document.getElementById('forcedAction').value;
-    //   const badOutcome = document.getElementById('badOutcome').value;
-    
-    //   // Save the story object to localStorage
-    //   const story = {
-    //     incitingIncident,
-    //     protagonist,
-    //     mainGoal,
-    //     antagonist,
-    //     obstacle,
-    //     painPoint,
-    //     setting,
-    //     forcedAction,
-    //     badOutcome
-    //   };
-    //   localStorage.setItem('story', JSON.stringify(story));
-    // // }
-
+  
    
     // Create a new logline container
     const loglineContainer = document.createElement('div');
@@ -77,57 +74,64 @@
     loglineOutput.appendChild(loglineContainer);
   }
   
-
-  function downloadLoglines() {
-    // Get all the logline text elements on the page
-    const loglines = document.querySelectorAll('.logline');
+  function saveResults() {
+    // Get all the input values
   
-    // Create a new text file
-    const file = new Blob([loglines.map(logline => logline.innerText).join('\n')], {type: 'text/plain'});
+    const inputValues = {
+      'when-a': {},
+      'after-a': {},
+      'a': {},
+     
+    };
+   
+    const inputFields = document.querySelectorAll('#logline-type option:checked ~ .logline-inputs input');
+    for (const inputField of inputFields) {
+      inputValues[inputField.closest('.logline-inputs').id][inputField.name] = inputField.value;
+    }
   
-    // Create a URL for the file
-    const url = URL.createObjectURL(file);
+    // Get all the generated loglines
+    const loglineElements = document.querySelectorAll('.logline');
+    const loglines = [];
+    for (const loglineElement of loglineElements) {
+      loglines.push(loglineElement.textContent);
+    }
   
-    // Create a link to download the file
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'loglines.txt';
+    // Store the input values and loglines in local storage
+    const data = {
+      'inputValues': inputValues,
+      'loglines': loglines,
+    };
+    localStorage.setItem('loglines', JSON.stringify(data));
   
-    // Click the link to start the download
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
   }
   
-  document.getElementById('download-btn').addEventListener('click', downloadLoglines);
-
+  const savedLoglines = localStorage.getItem('loglines');
   
-function saveResults() {
-  // Get all the input values
-  const inputValues = {
-    'when-a': {},
-    'after-a': {},
-    'a': {},
-  };
-  const inputFields = document.querySelectorAll('#logline-type option:checked ~ .logline-inputs input');
-  for (const inputField of inputFields) {
-    inputValues[inputField.closest('.logline-inputs').id][inputField.name] = inputField.value;
+  let loglines = [];
+  if (savedLoglines) {
+    const savedData = JSON.parse(savedLoglines);
+    loglines = savedData.loglines;
+    const inputValues = savedData.inputValues;
+    for (const inputType in inputValues) {
+      const inputs = inputValues[inputType];
+      const inputElements = document.querySelectorAll(`#${inputType} input`);
+      for (const inputElement of inputElements) {
+        inputElement.value = inputs[inputElement.name];
+      }
+    }
   }
-
-  // Get all the generated loglines
-  const loglineElements = document.querySelectorAll('.logline');
-  const loglines = [];
-  for (const loglineElement of loglineElements) {
-    loglines.push(loglineElement.textContent);
+  
+  const loglineOutput = document.getElementById('logline');
+  for (const logline of loglines) {
+    const loglineContainer = document.createElement('div');
+    loglineContainer.classList.add('logline-container');
+    const loglineElement = document.createElement('p');
+    loglineElement.classList.add('logline');
+    loglineElement.textContent = logline;
+    loglineContainer.appendChild(loglineElement);
+    loglineOutput.appendChild(loglineContainer);
   }
-
-  // Store the input values and loglines in local storage
-  const data = {
-    'inputValues': inputValues,
-    'loglines': loglines,
-  };
-  localStorage.setItem('loglineData', JSON.stringify(data));
-}
+  
 
 
 function startOver() {
