@@ -52,10 +52,10 @@ const file = new Blob([Array.from(loglines).map(logline => logline.innerText).jo
         logline = `"When a ${inputValues.leadCharacter} ${inputValues.centralConflict} ${inputValues.actionPoint} ${inputValues.mainGoal} ${inputValues.opposingForce}."`;
         break;
       case 'after-a':
-        logline = `After a ${inputValues.majorEvent}, ${inputValues.leadCharacter}  ${inputValues.actionPoint} ${inputValues.mainGoal} ${inputValues.opposingForce}.`;
+        logline = `"After a ${inputValues.majorEvent}, ${inputValues.leadCharacter}  ${inputValues.actionPoint} ${inputValues.mainGoal} ${inputValues.opposingForce}."`;
         break;
       case 'a':
-        logline = `A ${inputValues.leadCharacter} ${inputValues.centralConflict} ${inputValues.opposingForce} ${inputValues.mainGoal}.`;
+        logline = `"A ${inputValues.leadCharacter} ${inputValues.centralConflict} ${inputValues.opposingForce} ${inputValues.mainGoal}."`;
         break;
     }
 
