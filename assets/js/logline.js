@@ -1,9 +1,12 @@
-  const inputValues = {
+const inputValues = {
     'when-a': {},
     'after-a': {},
     'a': {},
    
   };
+
+//DOWNLOAD LOGLINE///
+
   function downloadLoglines() {
     // Get all the logline text elements on the page
   // Get all the logline text elements on the page
@@ -29,7 +32,7 @@ const file = new Blob([Array.from(loglines).map(logline => logline.innerText).jo
   
   document.getElementById('download-btn').addEventListener('click', downloadLoglines);
 
-
+///GENERATE LOGLINE//
   function generateLogline() {
     // Get selected logline type
     const loglineType = document.getElementById('logline-type').value;
@@ -55,8 +58,6 @@ const file = new Blob([Array.from(loglines).map(logline => logline.innerText).jo
         break;
     }
 
-  
-   
     // Create a new logline container
     const loglineContainer = document.createElement('div');
     loglineContainer.classList.add('logline-container');
@@ -73,7 +74,9 @@ const file = new Blob([Array.from(loglines).map(logline => logline.innerText).jo
     const loglineOutput = document.getElementById('logline');
     loglineOutput.appendChild(loglineContainer);
   }
-  
+
+
+  //SAVE RESULTS//
   function saveResults() {
     // Get all the input values
   
@@ -105,6 +108,7 @@ const file = new Blob([Array.from(loglines).map(logline => logline.innerText).jo
   
   }
   
+  
   const savedLoglines = localStorage.getItem('loglines');
   
   let loglines = [];
@@ -132,8 +136,24 @@ const file = new Blob([Array.from(loglines).map(logline => logline.innerText).jo
     loglineOutput.appendChild(loglineContainer);
   }
   
+// Set placeholder text for all input fields
+const inputFields = document.querySelectorAll('input');
+inputFields.forEach(input => {
+  const placeholderText = input.getAttribute('placeholder');
+  input.value = placeholderText;
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Set placeholder text for all input fields
+  const inputFields = document.querySelectorAll('input');
+  inputFields.forEach(input => {
+    const placeholderText = input.getAttribute('placeholder');
+    input.value = placeholderText;
+  });
+});
 
 
+//START OVER////
 function startOver() {
   // Clear all input fields
   const inputFields = document.querySelectorAll(`input[type="text"]`);
