@@ -5,6 +5,7 @@ const inputValues = {
    
   };
 
+
 //DOWNLOAD LOGLINE///
 
   function downloadLoglines() {
@@ -136,6 +137,8 @@ const file = new Blob([Array.from(loglines).map(logline => logline.innerText).jo
     loglineOutput.appendChild(loglineContainer);
   }
   
+ 
+
 // Set placeholder text for all input fields
 const inputFields = document.querySelectorAll('input');
 inputFields.forEach(input => {
@@ -152,6 +155,16 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+for (const inputField of inputFields) {
+  const inputId = inputField.closest('.logline-inputs').id;
+  const inputName = inputField.name;
+  const savedValue = inputValues[inputId][inputName];
+  if (savedValue !== undefined && savedValue !== '') {
+    inputField.value = savedValue;
+  } else {
+    inputField.value = inputField.getAttribute('placeholder');
+  }
+}
 
 //START OVER////
 function startOver() {
@@ -160,6 +173,7 @@ function startOver() {
   for (const inputField of inputFields) {
     inputField.value = '';
   }
+
 
   // Clear all generated loglines
   const loglineContainer = document.getElementById('logline');
