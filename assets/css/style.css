@@ -64,7 +64,7 @@
 
 }
 
-h1, h2{
+h1, h2, a {
 color: pink; 
 }
 
@@ -92,6 +92,11 @@ color: pink;
   .logline {
     margin-top: 1rem;
   }
+
+footer {
+color: #ffff;
+
+}
 
 
   /*select, button {
