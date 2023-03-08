@@ -9,14 +9,20 @@ The Logline Generator also allows the user to save their generated loglines and 
 
 ## How to use
 To use the Logline Generator, simply go to the web page and follow these steps:
+<br>
 <img src="assets\imgs\LoglineGeneratorTop.png" width="500px">
+<br>
 Select a logline template from the dropdown menu.
 Fill in the blanks with your story elements. You can use the placeholder text as a guide or come up with your own ideas.
+<br>
 <img src="assets\imgs\LGdropdown.png" width="500px">
+<br>
 Click on the "Generate" button to see your logline. You can click on the button again to generate a new logline with the same inputs.
 If you like the logline, you can save it by clicking on the "Save Results" button. This will store your logline and input values in the browser's local storage.
 You can download a .txt file of your saved loglines by clicking on the "Download Loglines" button. This will create a file with one logline per line.
+<br>
 <img src="assets\imgs\lga.png" width="500px">
+<br>
 If you want to start over or clear your saved data, you can click on the "Start Over" button. This will refresh the page and erase all the inputs and loglines.
 
 ## Tech Used
