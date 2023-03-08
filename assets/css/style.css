@@ -10,21 +10,6 @@
   margin-top: 1rem;
 }
 
-
-/*.sidebar.show {
-  left: 10; /* slide in */
-/*}
-
-/*.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 20px;
-}
-
-/*.sidebar ul li {
-  margin-bottom: 10px;
-}
-/* Styling for the top navigation bar */
 .topnav {
   background-color: #333;
   overflow: hidden;
@@ -48,16 +33,7 @@
   background-color: #007bff;
   color: #fff;
 }
- /*.sidebar {
-  position: fixed;
-  top: 0;
-  left: -300px; /* start offscreen */
- /* width: 300px;
-  height: 100%;
-  background-color: #f5f5f5;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  transition: left 0.3s ease-in-out;
-} */
+
 
 #title {
   width: 30%;
@@ -68,11 +44,7 @@ h1, h2, a {
 color: pink; 
 }
 
-.buy-me-a-coffee {
 
-float: right;
-
-}
 /*label {
     display: block;
     margin-top: 1rem;
