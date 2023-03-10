@@ -35,5 +35,5 @@ If you would like to contribute to the Logline Generator, you can fork the repos
 
 ## Contact
 
-Any Questions? Contact [Ryan Evans](ryanevans). Looking for mor helpful resources and productivity tools? Visit [WebIdiot.Online](https://www.webidiot.online) and discover a unique blend of content for technology & entertaiment.
+Any Questions? Contact [Ryan Evans](ryanevans). Looking for more helpful resources and productivity tools? Visit [WebIdiot.Online](https://www.webidiot.online) and discover a unique blend of content for technology & entertainment.
 
