@@ -106,7 +106,7 @@ const file = new Blob([Array.from(loglines).map(logline => logline.innerText).jo
       'loglines': loglines,
     };
     localStorage.setItem('loglines', JSON.stringify(data));
-  
+    alert('Story saved to local storage');
   }
   
   
